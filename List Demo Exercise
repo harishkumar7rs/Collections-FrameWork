@@ -1,0 +1,55 @@
+package com.collections;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class Main {
+
+    public static void main(String[] args) {
+        ArrayList<Integer> arr1= new ArrayList<>();
+        ArrayList<Integer> arr2=new ArrayList<>(List.of(10,20,30,40,50,60,70));
+
+        arr1.add(10);
+        arr1.add(20);
+        arr1.addAll(arr2);
+        arr1.add(5,60);
+        arr1.set(6,100);
+
+        //arr1.forEach(n-> System.out.println(n));
+        //arr1.forEach(System.out::println);
+
+        /*System.out.println(arr1.contains(30));
+        System.out.println(arr1.get(3));
+        System.out.println(arr1.indexOf(10));
+        System.out.println(arr1.lastIndexOf(10));*/
+
+        //System.out.println(arr1);
+
+        /*for (int i=0;i<arr1.size();i++){
+            System.out.println(arr1.get(i));
+        }*/
+
+        /*for (Integer x :
+                arr1) {
+            System.out.println(x);
+        }*/
+
+        /*arr1.forEach((inti)->{
+            System.out.println(inti);
+        });*/
+
+        /*for (Iterator<Integer>iterator = arr1.iterator();iterator.hasNext();){
+            java.lang.Integer integer= iterator.next();
+            System.out.println(integer);
+        }*/
+
+        arr1.forEach(integer -> show(integer));
+
+    }
+    static void show(int integer){
+        if (integer>60)
+            System.out.println(integer);
+    }
+
+}
