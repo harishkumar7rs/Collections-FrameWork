@@ -1,0 +1,29 @@
+package com.collections;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+public class Main {
+
+    public static void main(String[] args) {
+        LinkedList<Integer> arr1= new LinkedList<>();
+        LinkedList<Integer> arr2=new LinkedList<>(List.of(10,20,30,40,50,60,70));
+        arr1.add(10);
+        arr1.add(20);
+        arr1.addAll(arr2);
+        arr1.add(5,60);
+        arr1.set(6,100);
+        
+        
+        arr1.addFirst(1);
+        arr1.addLast(10000);
+        
+        arr1.forEach(integer -> show(integer));
+
+    }
+    static void show(int integer){
+        if (integer>0)
+            System.out.println(integer);
+    }
+
+}
