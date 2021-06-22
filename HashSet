@@ -1,0 +1,20 @@
+package com.collections;
+
+import java.util.HashSet;
+
+public class Main {
+
+    public static void main(String[] args) {
+        HashSet<Integer>hashSet=new HashSet<>(20,0.5f);
+
+        hashSet.add(10);
+        hashSet.add(20);
+        hashSet.add(30);
+        hashSet.add(40);
+        hashSet.add(10);
+
+        System.out.println(hashSet);
+
+
+    }
+}
