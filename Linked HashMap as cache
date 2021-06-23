@@ -38,3 +38,4 @@ public class Main {
         linkedHashMap.forEach((k,v)-> System.out.println("k="+k+" | v="+v));*///least access at top, 1 is least accessed,4 is most accessed.
     }
 }
+
