@@ -1,0 +1,35 @@
+package com.collections;
+
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.util.Properties;
+
+public class Main {
+
+    public static void main(String[] args)throws Exception {
+        Properties properties=new Properties();
+        /*properties.setProperty("Laptop","Asus");
+        properties.setProperty("Processor","i3");
+        properties.setProperty("Colour","Black");
+        properties.setProperty("Price","32,000");
+
+        System.out.println(properties);
+        properties.store(new FileOutputStream("D:/Java/classProperties.txt"),"setProperty and Store in a File");*/
+
+
+        //properties.store(new FileOutputStream("D:/Java/classProperties.pdf"),"setProperty and Store in a File");
+
+        //properties.loadFromXML(new FileInputStream("D:/Java/classProperties.xml"));
+
+        //System.out.println(properties);
+        //System.out.println(properties.getProperty("Name"));
+
+        properties.load(new FileInputStream("D:/Java/classProperties.txt"));
+        //System.out.println(properties);
+        System.out.println(properties.getProperty("Mobile"));
+
+
+
+    }
+}
