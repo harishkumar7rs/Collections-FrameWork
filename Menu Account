@@ -1,0 +1,129 @@
+package com.Collections;
+
+import java.io.*;
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class Main implements Serializable {
+
+    public static void main(String[] args)throws Exception {
+        Scanner input =new Scanner(System.in);
+        HashMap<Integer,Account>hashMap=new HashMap<>();
+        System.out.print("Welcome to Banking: \n\n 1.Create Account \n 2.Delete Account \n 3.View Account \n 4.View All Account \n 5.Save Accounts \n 6.Exit \n\n Enter Your Choice : ");
+        int n=0;
+        do {
+            if (n>0) System.out.print("Enter Your Choice : ");
+            if (n==6)n=n-1;
+            n=input.nextInt();
+            switch (n){
+                case 1:{        Scanner input1 =new Scanner(System.in);
+                try{
+
+                    FileInputStream fileInputStream=new FileInputStream("D:/Java/Accountmenu.txt");
+                    ObjectInputStream objectInputStream=new ObjectInputStream(fileInputStream);
+                    Account account=null;
+                    int count=objectInputStream.readInt();
+                    for (int i=0;i<count;i++){
+                        account=(Account) objectInputStream.readObject();
+                        hashMap.put(account.getAccountNo(),account);
+                    }
+                    objectInputStream.close();
+                    fileInputStream.close();
+                }
+                catch (Exception e){}
+
+
+
+                    System.out.print("Enter the Accountant name : ");
+                    String name=input1.nextLine();
+                    System.out.print("Enter the Account Balance : ");
+                    double balance=input1.nextDouble();
+                    Account account=new Account(name,balance);
+                    hashMap.put(account.getAccountNo(),account);
+                    System.out.println("Account Created");
+                    break;
+                }
+                case 2:{
+                    System.out.print("Enter the Account No to delete : ");
+                    hashMap.remove(input.nextInt());
+                    System.out.println("Account is Deleted !!! ");
+                    break;
+                }
+                case 3:{
+                    System.out.print("Enter the Account No to View : ");
+                    System.out.println( hashMap.get(input.nextInt()));
+                    break;
+                }
+                case 4:{
+                    for (Account x :
+                            hashMap.values()) {
+                        System.out.println(x);
+                    }
+                    break;
+                }
+                case (5):{
+                    FileOutputStream fileOutputStream=new FileOutputStream("D:/Java/Accountmenu.txt");
+                    ObjectOutputStream objectOutputStream=new ObjectOutputStream(fileOutputStream);
+                    objectOutputStream.writeObject(hashMap.entrySet());
+                    break;
+                }
+
+            }
+        }while (n!=6);
+    }
+}
+//Account
+package com.Collections;
+
+import java.io.Serializable;
+ class GenerateAccNo{
+     static int accountNo;
+
+     GenerateAccNo() {
+         accountNo++;
+     }
+     public void setaccountNo(int accountNo){
+         GenerateAccNo.accountNo=accountNo;
+     }
+     public int getAccountNo(){
+         return GenerateAccNo.accountNo;
+     }
+
+}
+
+public class Account  {
+    int accountNo;
+    String name;
+    double balance;
+
+    public void setCount(int count) {
+        this.count = count++;
+    }
+
+    int count=0;
+    Account(){
+        setAccountNo(count);
+        this.accountNo=getAccountNo();
+    }
+    Account(String name,double balance){
+        setAccountNo(new GenerateAccNo().getAccountNo());
+        this.accountNo=getAccountNo();
+        this.name=name;
+        this.balance=balance;
+    }
+
+    public int getAccountNo() {
+        return accountNo;
+    }
+
+    public void setAccountNo(int count) {
+        this.accountNo = count;
+        setCount(count);
+
+    }
+    public String toString(){
+        return "Account Number = "+this.accountNo+"\nAccountant Name = "+this.name+"\nAccount balance = "+this.balance;
+    }
+
+
+}
